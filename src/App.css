@@ -1,0 +1,96 @@
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+
+  background-image: url('./assets/bg.jpg'); /* ✅ Use correct relative path */
+  background-size: cover;                  /* ✅ Cover full screen */
+  background-position: center;             /* ✅ Center the image */
+  background-repeat: no-repeat;
+
+  font-family: sans-serif;
+  overflow: hidden;
+}
+
+
+.phone-frame {
+  width: 375px;
+  height: 667px;
+  background: #111;
+  border-radius: 30px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  color: white;
+  font-size: 18px;
+  background: #242424;
+}
+
+.back-arrow {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.username {
+  flex: 1;
+}
+
+.online-dot {
+  width: 10px;
+  height: 10px;
+  background: limegreen;
+  border-radius: 50%;
+}
+
+.chat-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  background-image: url('./assets/chat-bg-2.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+.input-bar {
+  display: flex;
+  padding: 10px;
+  background: #000;
+  border-top: 1px solid #222;
+}
+
+.input-bar input {
+  flex: 1;
+  padding: 10px;
+  background: #1c1c1c;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  margin-right: 10px;
+  outline: none;
+}
+
+.input-bar button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 20px;
+  background: #0078ff;
+  color: white;
+  cursor: pointer;
+}

@@ -1,0 +1,16 @@
+.wave {
+  height: 8px;
+  width: 100%;
+  background: linear-gradient(270deg, red, blue, cyan, red);
+  background-size: 600% 600%;
+  animation: waveAnim 4s ease infinite;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+
+@keyframes waveAnim {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
