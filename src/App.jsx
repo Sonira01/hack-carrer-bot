@@ -30,7 +30,8 @@ const handleSend = async () => {
   setInput('');
 
   try {
-    const response = await axios.post('https://hack-carrer-bot.onrender.com', {
+    const response = await axios.post('https://hack-carrer-bot.onrender.com/api/chat', {
+
       userQuery: input,
       history: newMessages.map((msg) => ({
         role: msg.fromUser ? 'user' : 'model',
