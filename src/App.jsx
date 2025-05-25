@@ -8,6 +8,7 @@ import './App.css';
 import bg from './assets/bg.jpg';
 import { FaSearch } from 'react-icons/fa'; 
 import Typewriter from './components/Typewriter';
+import axios from 'axios';
 
 function App() {
   const [messages, setMessages] = useState([]);
@@ -16,16 +17,33 @@ function App() {
   const [inputPlaceholder, setInputPlaceholder] = useState('');
   const [isTypingPaused, setIsTypingPaused] = useState(false);
 
-  const handleSend = () => {
-    if (input.trim() === '') return;
+const handleSend = async () => {
+  if (input.trim() === '') return;
 
-    if (!chatStarted) {
-      setChatStarted(true);
-    }
+  // ✅ Ensure this triggers every time input is sent
+  if (!chatStarted) {
+    setChatStarted(true);
+  }
 
-    setMessages((prev) => [...prev, { text: input, fromUser: true }]);
-    setInput('');
-  };
+  const newMessages = [...messages, { text: input, fromUser: true }];
+  setMessages(newMessages);
+  setInput('');
+
+  try {
+    const response = await axios.post('http://localhost:5000/api/chat', {
+      userQuery: input,
+      history: newMessages.map((msg) => ({
+        role: msg.fromUser ? 'user' : 'model',
+        content: msg.text
+      }))
+    });
+
+    setMessages((prev) => [...prev, { text: response.data.response, fromUser: false }]);
+  } catch (err) {
+    console.error("API Error:", err);
+  }
+};
+
 
   // Pause typewriter if user starts typing
   useEffect(() => {
