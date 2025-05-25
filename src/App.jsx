@@ -1,37 +1,80 @@
 // src/App.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import WaveHeader from './components/WaveHeader';
 import Header from './components/Header';
 import ChatBody from './components/ChatBody';
 import InputBar from './components/InputBar';
 import './App.css';
 import bg from './assets/bg.jpg';
+import { FaSearch } from 'react-icons/fa'; 
+import Typewriter from './components/Typewriter';
 
 function App() {
-  const [messages, setMessages] = useState([
-    { text: 'Hey, man!', fromUser: false },
-    { text: 'Are you surfing now?', fromUser: false },
-  ]);
+  const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
+  const [chatStarted, setChatStarted] = useState(false);
+  const [inputPlaceholder, setInputPlaceholder] = useState('');
+  const [isTypingPaused, setIsTypingPaused] = useState(false);
 
   const handleSend = () => {
     if (input.trim() === '') return;
-    setMessages([...messages, { text: input, fromUser: true }]);
+
+    if (!chatStarted) {
+      setChatStarted(true);
+    }
+
+    setMessages((prev) => [...prev, { text: input, fromUser: true }]);
     setInput('');
   };
 
+  // Pause typewriter if user starts typing
+  useEffect(() => {
+    if (input.length > 0) {
+      setIsTypingPaused(true);
+    } else {
+      setIsTypingPaused(false);
+    }
+  }, [input]);
+
   return (
     <div className="app" style={{ backgroundImage: `url(${bg})` }}>
-      <div className="phone-frame">
-        <WaveHeader />
-        <Header />
-        <ChatBody messages={messages} />
-        <InputBar
-          input={input}
-          setInput={setInput}
-          handleSend={handleSend}
-        />
-      </div>
+      {!chatStarted ? (
+        <div className="start-screen">
+          {!isTypingPaused && (
+            <Typewriter
+              texts={[
+                "What stream you chose?",
+                "Which field you want to pursue?",
+                "What's your dream job?"
+              ]}
+              setPlaceholder={setInputPlaceholder}
+            />
+          )}
+
+          <div className="start-input">
+            <input
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={(e) => e.key === 'Enter' && handleSend()}
+              placeholder={inputPlaceholder || 'Type your question here...'}
+            />
+            <button onClick={handleSend}>
+              <FaSearch />
+            </button>
+          </div>
+        </div>
+      ) : (
+        <div className="phone-frame">
+          <WaveHeader />
+          <Header />
+          <ChatBody messages={messages} />
+          <InputBar
+            input={input}
+            setInput={setInput}
+            handleSend={handleSend}
+          />
+        </div>
+      )}
     </div>
   );
 }

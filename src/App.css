@@ -94,3 +94,83 @@
   color: white;
   cursor: pointer;
 }
+/* App.css additions */
+
+.start-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  backdrop-filter: blur(4px);
+  text-align: center;
+}
+
+.start-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.start-input {
+  display: flex;
+  gap: 10px;
+}
+
+.start-input input {
+  width: 400px; /* Increase this value as needed */
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  background-color: #222;
+  color: white;
+}
+
+
+.start-input button {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  background-color: #4e54c8;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+/* In App.css or wherever you style your app */
+.typewriter {
+  font-family: 'Courier New', Courier, monospace;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid white;
+  animation: blink 1s step-start infinite;
+}
+.start-input input::placeholder {
+  font-size: 1.2rem; /* Increase as needed */
+  color: #aaa;        /* Optional: lighter placeholder color */
+}
+input::placeholder {
+  position: relative;
+  color: #aaa;
+  font-style: italic;
+}
+
+input.blinking::placeholder::after {
+  content: '|';
+  animation: blink 1s infinite;
+  position: absolute;
+}
+
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
