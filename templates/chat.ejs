@@ -1,0 +1,30 @@
+<!-- templates/chat.ejs -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Career Chatbot</title>
+  <style>
+    body { font-family: Arial; padding: 20px; background: #f9f9f9; }
+    .chat-box { border: 1px solid #ccc; padding: 10px; background: white; max-width: 600px; margin: auto; }
+    .message { margin-bottom: 10px; }
+    .user { font-weight: bold; color: blue; }
+    .model { font-weight: bold; color: green; }
+    form { margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <div class="chat-box">
+    <% history.forEach(msg => { %>
+      <div class="message">
+        <span class="<%= msg.role %>"><%= msg.role %>:</span>
+        <span><%= msg.content %></span>
+      </div>
+    <% }) %>
+    <form method="POST">
+      <input type="text" name="user_input" placeholder="Ask something..." required style="width:80%;">
+      <button type="submit">Send</button>
+    </form>
+    <a href="/reset">Reset Conversation</a>
+  </div>
+</body>
+</html>

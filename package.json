@@ -1,16 +1,17 @@
 {
-  "name": "chatbot-ui",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
+<<<<<<< HEAD
     "axios": "^1.9.0",
     "body-parser": "^2.2.0",
     "cors": "^2.8.5",
@@ -46,4 +47,12 @@
     "url": "https://github.com/Sonira01/hackathon-chatbot/issues"
   },
   "homepage": "https://github.com/Sonira01/hackathon-chatbot#readme"
+=======
+    "body-parser": "^2.2.0",
+    "dotenv": "^16.5.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-session": "^1.18.1"
+  }
+>>>>>>> 320b082da3a80d0cffcfa18ef8458c5189a9f92b
 }
