@@ -30,7 +30,7 @@ const handleSend = async () => {
   setInput('');
 
   try {
-    const response = await axios.post("https://hack-carrer-bot.onrender.com", {
+    const response = await axios.post("hack-carrer-bot-av5y-2u055sqzj-sonira01s-projects.vercel.app", {
       userQuery: input,
       history: newMessages.map((msg) => ({
         role: msg.fromUser ? 'user' : 'model',
